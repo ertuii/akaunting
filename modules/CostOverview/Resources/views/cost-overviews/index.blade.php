@@ -25,11 +25,6 @@
 
                 <tbody>
                     @foreach($customers as $customer)
-                        @php
-                            $unpaid_total = $customer->invoices()
-                                ->whereIn('status', ['sent', 'viewed', 'partial'])
-                                ->sum('amount_due');
-                        @endphp
                         <tr class="row align-items-center border-top-1">
                             <td class="col-md-4 text-left">
                                 <a href="{{ route('cost-overviews.show', $customer->id) }}" class="font-weight-bold">
@@ -40,8 +35,8 @@
                                 {{ $customer->email ?? trans('general.na') }}
                             </td>
                             <td class="col-md-2 text-right">
-                                <span class="font-weight-bold {{ $unpaid_total > 0 ? 'text-danger' : 'text-success' }}">
-                                    {!! money($unpaid_total, $customer->currency_code ?? default_currency(), true) !!}
+                                <span class="font-weight-bold {{ $customer->unpaid_total > 0 ? 'text-danger' : 'text-success' }}">
+                                    {!! money($customer->unpaid_total, $customer->currency_code ?? default_currency(), true) !!}
                                 </span>
                             </td>
                             <td class="col-md-3 text-center">

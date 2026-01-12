@@ -104,8 +104,7 @@ class CostOverview extends Notification
             ]));
 
         if (file_exists($temp_path)) {
-            $func = 'fromPath';
-            $file = Attachment::$func($temp_path)->withMime('application/pdf');
+            $file = Attachment::fromPath($temp_path)->withMime('application/pdf');
             $message->attach($file);
         }
 

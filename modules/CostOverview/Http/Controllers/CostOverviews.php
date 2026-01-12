@@ -20,9 +20,16 @@ class CostOverviews extends Controller
     public function index()
     {
         $customers = Contact::where('type', Contact::CUSTOMER_TYPE)
-            ->with('invoices', 'transactions')
+            ->with(['invoices' => function($query) {
+                $query->whereIn('status', ['sent', 'viewed', 'partial']);
+            }])
             ->enabled()
             ->collect(['name' => 'asc']);
+
+        // Calculate unpaid totals for each customer
+        foreach ($customers as $customer) {
+            $customer->unpaid_total = $customer->invoices->sum('amount_due');
+        }
 
         return view('cost-overview::cost-overviews.index', compact('customers'));
     }
