@@ -1,0 +1,22 @@
+{
+    "name": "akaunting/cost-overview",
+    "description": "Cost Overview Module for Akaunting",
+    "type": "akaunting-module",
+    "keywords": ["akaunting", "cost", "overview", "budget", "estimate"],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Akaunting",
+            "email": "info@akaunting.com",
+            "homepage": "https://akaunting.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CostOverview\\": ""
+        }
+    }
+}

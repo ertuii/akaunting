@@ -1,0 +1,24 @@
+{
+    "alias": "cost-overview",
+    "category": "sales",
+    "name": "Cost Overview",
+    "description": "Create and manage cost overviews with budget tracking, send them to customers, and convert to invoices",
+    "version": "1.0.0",
+    "author": {
+        "name": "Akaunting",
+        "email": "info@akaunting.com",
+        "homepage": "https://akaunting.com"
+    },
+    "providers": [
+        "Modules\\CostOverview\\Providers\\Main"
+    ],
+    "requires": {
+        "php": ">=8.1",
+        "akaunting": ">=3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CostOverview\\": ""
+        }
+    }
+}
